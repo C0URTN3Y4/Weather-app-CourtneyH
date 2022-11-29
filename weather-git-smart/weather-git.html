@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Weather App</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="src/style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <form>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search City Name..." autofocus="on" autocomplete="off">
+        <button id="search" class="btn btn-outline-secondary" type="submit">Search Now</button>
+        <button id="coordinates" class="btn btn-outline-secondary" type="button">Current Location</button>
+      </div>
+    </form>
+
+    <h1>State College, PA</h1>
+    <p>
+      🌦
+      <small>54°F </small>
+    </p>
+    <h2>weekday and time</h2>
+    <div class="row">
+      <div class="col">
+        Monday
+        <div class="tempHigh">57°</div>
+        <div class="tempLow">52°</div>
+      </div>
+      <div class="col">
+        Tuesday
+        <div class="tempHigh">65°</div>
+        <div class="tempLow">47°</div>
+      </div>
+      <div class="col">
+        Wednesday
+        <div class="tempHigh">67°</div>
+        <div class="tempLow">40°</div>
+      </div>
+      <div class="col">
+        Thursday
+        <div class="tempHigh">64°</div>
+        <div class="tempLow">41°</div>
+      </div>
+      <div class="col">
+        Friday
+        <div class="tempHigh">67°</div>
+        <div class="tempLow">47°</div>
+      </div>
+      <div class="col">
+        Saturday
+        <div class="tempHigh">69°</div>
+        <div class="tempLow">55°</div>
+      </div>
+      <div class="col">
+        Sunday
+        <div class="tempHigh">71°</div>
+        <div class="tempLow">53°</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <br>
+  <small>Coded by Courtney Hamilton</small>
+  <script src="src/projectWeather.js"></script>
+</body>
+
+</html>

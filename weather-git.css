@@ -1,0 +1,41 @@
+body {
+  background: radial-gradient(
+    circle at 12.3% 19.3%,
+    rgb(85, 88, 218) 0%,
+    rgb(95, 209, 249) 100.2%
+  );
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+p {
+  font-size: 70px;
+  text-align: center;
+}
+form {
+  display: block;
+  text-align: center;
+  padding-top: 60px;
+}
+small {
+  display: block;
+  text-align: center;
+}
+.col {
+  background: #1f496f;
+  border-radius: 13px;
+  padding: 15px;
+  text-align: center;
+  color: cornflowerblue;
+}
+
+.tempHigh {
+  font-weight: bolder;
+  font-size: larger;
+}
+.tempLow {
+  font-weight: lighter;
+  font-size: larger;
+}
