@@ -65,7 +65,7 @@ function cityInput(submitEvent) {
   submitEvent.preventDefault();
   let h1 = document.querySelector("h1");
   let input = document.querySelector("#search");
-  h1.innerHTML = `your city ${input.nodeValue}`;
+  h1.innerHTML = `${input.value}`;
 }
 let city = document.querySelector("#search");
 city.addEventListener("submitEvent", cityInput);
