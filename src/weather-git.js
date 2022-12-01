@@ -14,7 +14,7 @@ function formatDate() {
     "Saturday",
   ];
   let weekDay = weekDays[day];
-
+  let monthNumber = now.getUTCDate();
   let month = now.getMonth();
   let months = [
     "January",
@@ -33,7 +33,7 @@ function formatDate() {
   let yearMonth = months[month];
   let timeH = now.getHours();
   let timeM = now.getMinutes();
-  let current = `Today is ${weekDay}, ${timeH}:${timeM} `;
+  let current = `Today is ${weekDay} ${yearMonth} ${monthNumber}, ${timeH}:${timeM} `;
   return current;
 }
 let h2 = document.querySelector("h2");
@@ -63,9 +63,8 @@ position.addEventListener("click", clicked);
 
 function condtions(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#displayTemp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#displayTemp").innerHTML = `Math.round(
+    response.data.main.temp)°F`;
 }
 function cityInput(event) {
   event.preventDefault();
