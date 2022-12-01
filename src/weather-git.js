@@ -67,12 +67,12 @@ function condtions(response) {
     response.data.main.temp
   );
 }
-function cityInput(submitEvent) {
-  submitEvent.preventDefault();
+function cityInput(event) {
+  event.preventDefault();
   let apiKey = `8cac06f7ab6c10287cd06a316ff84a57`;
-  let city = document.querySelector("h1").value;
+  let city = document.querySelector("#search").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}`).then(condtions);
 }
-let city = document.querySelector("#search");
-city.addEventListener("submitEvent", cityInput);
+let citySearch = document.querySelector("#search");
+citySearch.addEventListener("submit", cityInput);
