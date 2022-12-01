@@ -61,11 +61,18 @@ function clicked(event) {
 let position = document.querySelector("#coordinates");
 position.addEventListener("click", clicked);
 
+function condtions(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#displayTemp").innerHTML = Math.round(
+    response.data.main.temp
+  );
+}
 function cityInput(submitEvent) {
   submitEvent.preventDefault();
-  let h1 = document.querySelector("h1");
-  let input = document.querySelector("#search");
-  h1.innerHTML = `${input.value}`;
+  let apiKey = `8cac06f7ab6c10287cd06a316ff84a57`;
+  let city = document.querySelector("h1").value;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(condtions);
 }
 let city = document.querySelector("#search");
 city.addEventListener("submitEvent", cityInput);

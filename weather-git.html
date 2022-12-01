@@ -16,8 +16,9 @@
   <div class="container">
     <form>
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search City Name..." autofocus="on" autocomplete="off">
-        <button id="search" class="btn btn-outline-secondary" type="submit">Search Now</button>
+        <input id="search" type="text" class="form-control" placeholder="Search City Name..." autofocus="on"
+          autocomplete="off">
+        <button class="btn btn-outline-secondary" type="submit">Search Now</button>
         <button id="coordinates" class="btn btn-outline-secondary" type="button">Current Location</button>
       </div>
     </form>
@@ -25,7 +26,7 @@
     <h1>State College, PA</h1>
     <p>
       🌦
-      <small>54°F </small>
+      <small id="displayTemp">54°F </small>
     </p>
     <h2>weekday and time</h2>
     <div class="row">
