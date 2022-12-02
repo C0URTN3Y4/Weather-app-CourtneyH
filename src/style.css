@@ -10,6 +10,7 @@ h2,
 h3 {
   text-align: center;
   padding: 20px 0px;
+  text-transform: capitalize;
 }
 p {
   font-size: 70px;
@@ -20,14 +21,19 @@ form {
   text-align: center;
   padding-top: 60px;
 }
-small {
+#displayTemp {
   display: block;
   text-align: center;
+  font-size: 70px;
 }
+
 .units {
+  display: block;
+  text-align: center;
   position: relative;
   font-size: 14px;
-  top: -36px;
+  top: -80px;
+  left: 60px;
   font-weight: 700;
 }
 .col {
@@ -37,7 +43,9 @@ small {
   text-align: center;
   color: cornflowerblue;
 }
-
+.d-flex {
+  flex-direction: column;
+}
 .tempHigh {
   font-weight: bolder;
   font-size: larger;
@@ -45,4 +53,14 @@ small {
 .tempLow {
   font-weight: lighter;
   font-size: larger;
+}
+#feels {
+  display: block;
+  text-align: center;
+  text-transform: capitalize;
+  position: relative;
+  font-size: 14px;
+  top: -40px;
+  left: 85px;
+  font-weight: 700;
 }
