@@ -62,9 +62,10 @@ let position = document.querySelector("#coordinates");
 position.addEventListener("click", clicked);
 
 function condtions(response) {
+  document.querySelector(h3).innerHTML = response.data.weather[0].description;
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#displayTemp").innerHTML = `Math.round(
-    response.data.main.temp)°F`;
+  document.querySelector("#displayTemp").innerHTML =
+    Math.round(response.data.main.temp) + "°F";
 }
 function cityInput(event) {
   event.preventDefault();

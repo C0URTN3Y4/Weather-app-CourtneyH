@@ -9,6 +9,7 @@ h1,
 h2,
 h3 {
   text-align: center;
+  padding: 20px 0px;
 }
 p {
   font-size: 70px;
@@ -23,7 +24,12 @@ small {
   display: block;
   text-align: center;
 }
-
+.units {
+  position: relative;
+  font-size: 14px;
+  top: -36px;
+  font-weight: 700;
+}
 .col {
   background: #1f496f;
   border-radius: 13px;
