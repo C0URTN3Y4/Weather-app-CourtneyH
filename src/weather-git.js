@@ -33,7 +33,7 @@ function formatDate() {
   let yearMonth = months[month];
   let timeH = now.getHours();
   let timeM = now.getMinutes();
-  let current = `Today is ${weekDay} ${yearMonth} ${monthNumber}, ${timeH}:${timeM} `;
+  let current = `Weather refreshed: ${weekDay} ${yearMonth} ${monthNumber}, ${timeH}:${timeM} `;
   return current;
 }
 let h2 = document.querySelector("h2");
@@ -69,6 +69,12 @@ function condtions(response) {
   document.querySelector("h3").innerHTML = response.data.weather[0].description;
   document.querySelector("#feels").innerHTML =
     "Feels like: " + Math.round(response.data.main.feels_like) + "°F";
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 function cityInput(event) {
   event.preventDefault();
