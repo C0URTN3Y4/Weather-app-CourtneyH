@@ -7,7 +7,8 @@ body {
 }
 h1,
 h2,
-h3 {
+h5,
+h4 {
   text-align: center;
   padding: 20px 0px;
   text-transform: capitalize;
@@ -27,6 +28,16 @@ form {
   font-size: 70px;
 }
 
+.active {
+  color: black;
+  text-decoration: none;
+  cursor: default;
+}
+.active:hover {
+  cursor: default;
+  color: black;
+  text-decoration: none;
+}
 .units {
   display: block;
   text-align: center;

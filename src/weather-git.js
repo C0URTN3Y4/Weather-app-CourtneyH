@@ -66,7 +66,9 @@ function condtions(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   fahrenheitTemp = response.data.main.temp;
   document.querySelector("#displayTemp").innerHTML = Math.round(fahrenheitTemp);
-  document.querySelector("h3").innerHTML = response.data.weather[0].description;
+  document.querySelector("#wind").innerHTML =
+    "Current windspeed: " + Math.round(response.data.wind.speed) + " mph";
+  document.querySelector("h5").innerHTML = response.data.weather[0].description;
   document.querySelector("#feels").innerHTML =
     "Feels like: " + Math.round(response.data.main.feels_like) + "°F";
   document
@@ -90,13 +92,27 @@ citySearch.addEventListener("submit", userSubmit);
 
 let fahrenheitTemp = null;
 
+function showOriginal(event) {
+  event.preventDefault();
+  let celsius = document.querySelector("#displayTemp");
+  original.classList.add("active");
+  metric.classList.remove("active");
+  celsius.innerHTML = Math.round(fahrenheitTemp);
+}
+
 function showConversion(event) {
   event.preventDefault();
   let celsius = document.querySelector("#displayTemp");
   let conversion = (fahrenheitTemp * 5) / 9 - 32;
+  metric.classList.add("active");
+  original.classList.remove("active");
   celsius.innerHTML = Math.round(conversion);
 }
 
-document.querySelector("#celsius").addEventListener("click", showConversion);
+let metric = document.querySelector("#celsius");
+metric.addEventListener("click", showConversion);
+
+let original = document.querySelector("#fahrenheit");
+original.addEventListener("click", showOriginal);
 
 cityInput("Miami");
