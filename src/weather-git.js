@@ -62,12 +62,10 @@ function clicked(event) {
 let position = document.querySelector("#coordinates");
 position.addEventListener("click", clicked);
 
-//search bar
 function condtions(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#displayTemp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  fahrenheitTemp = response.data.main.temp;
+  document.querySelector("#displayTemp").innerHTML = Math.round(fahrenheitTemp);
   document.querySelector("h3").innerHTML = response.data.weather[0].description;
   document.querySelector("#feels").innerHTML =
     "Feels like: " + Math.round(response.data.main.feels_like) + "°F";
@@ -87,9 +85,18 @@ function userSubmit(event) {
   event.preventDefault();
   cityInput(document.querySelector("#name").value);
 }
-cityInput("Miami");
 let citySearch = document.querySelector("#search");
 citySearch.addEventListener("submit", userSubmit);
 
-//goal:
-//he accomplished this by calling the ajx code once at the bottom of the code
+let fahrenheitTemp = null;
+
+function showConversion(event) {
+  event.preventDefault();
+  let celsius = document.querySelector("#displayTemp");
+  let conversion = (fahrenheitTemp * 5) / 9 - 32;
+  celsius.innerHTML = Math.round(conversion);
+}
+
+document.querySelector("#celsius").addEventListener("click", showConversion);
+
+cityInput("Miami");
