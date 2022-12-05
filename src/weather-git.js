@@ -39,6 +39,7 @@ function formatDate() {
 let h2 = document.querySelector("h2");
 h2.innerHTML = formatDate();
 
+//current location
 function weather(response) {
   let temp = Math.round(response.data.main.temp);
   let small = document.querySelector("small");
@@ -61,6 +62,7 @@ function clicked(event) {
 let position = document.querySelector("#coordinates");
 position.addEventListener("click", clicked);
 
+//search bar
 function condtions(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#displayTemp").innerHTML = Math.round(
@@ -76,12 +78,18 @@ function condtions(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
 }
-function cityInput(event) {
-  event.preventDefault();
+function cityInput(city) {
   let apiKey = `8cac06f7ab6c10287cd06a316ff84a57`;
-  let city = document.querySelector("#name").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}`).then(condtions);
 }
+function userSubmit(event) {
+  event.preventDefault();
+  cityInput(document.querySelector("#name").value);
+}
+cityInput("Miami");
 let citySearch = document.querySelector("#search");
-citySearch.addEventListener("submit", cityInput);
+citySearch.addEventListener("submit", userSubmit);
+
+//goal:
+//he accomplished this by calling the ajx code once at the bottom of the code
