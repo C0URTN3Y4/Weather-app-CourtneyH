@@ -39,6 +39,26 @@ function formatDate() {
 let h2 = document.querySelector("h2");
 h2.innerHTML = formatDate();
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHtml = `<div class="row">`;
+  let days = ["Thurs", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="col">
+          <div class="forecast date">${day}</div>
+          <img src="#" alt=""/>
+          <div class="forecastTemps">
+          <div class="tempHigh">57°</div>
+          <div class="tempLow">52°</div>
+          </div>
+        </div>`;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
 //current location
 function weather(response) {
   let temp = Math.round(response.data.main.temp);
@@ -116,3 +136,5 @@ let original = document.querySelector("#fahrenheit");
 original.addEventListener("click", showOriginal);
 
 cityInput("Miami");
+
+displayForecast();
