@@ -39,11 +39,11 @@ function formatDate() {
 let h2 = document.querySelector("h2");
 h2.innerHTML = formatDate();
 
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHtml = `<div class="row">`;
   let days = ["Thurs", "Fri", "Sat", "Sun", "Mon"];
+  let forecastHtml = `<div class="row">`;
   days.forEach(function (day) {
     forecastHtml =
       forecastHtml +
@@ -98,10 +98,14 @@ function condtions(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
 }
+
 function cityInput(city) {
   let apiKey = `8cac06f7ab6c10287cd06a316ff84a57`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}`).then(condtions);
+
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(`${forecastUrl}`).then(displayForecast);
 }
 function userSubmit(event) {
   event.preventDefault();
@@ -137,4 +141,4 @@ original.addEventListener("click", showOriginal);
 
 cityInput("Miami");
 
-displayForecast();
+displayForecast("Miami");
