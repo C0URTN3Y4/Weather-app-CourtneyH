@@ -40,19 +40,23 @@ let h2 = document.querySelector("h2");
 h2.innerHTML = formatDate();
 
 function displayForecast(response) {
+  let daily = response.data.daily;
+  console.log(daily);
+  //let days = ["Today", "Tomorrow", "Following Day", "Day After", "Mon"];
+  //let orderedTime = days[daily];
+
   let forecastElement = document.querySelector("#forecast");
 
-  let days = ["Thurs", "Fri", "Sat", "Sun", "Mon"];
   let forecastHtml = `<div class="row">`;
-  days.forEach(function (day) {
+  days.forEach(function (orderedTime) {
     forecastHtml =
       forecastHtml +
       `<div class="col">
-          <div class="forecast date">${day}</div>
+          <div class="forecast date">${orderedTime.dt}</div>
           <img src="#" alt=""/>
           <div class="forecastTemps">
-          <div class="tempHigh">57°</div>
-          <div class="tempLow">52°</div>
+          <div class="tempHigh">${orderedTime.temp_max}°</div>
+          <div class="tempLow">${orderedTime.temp_min}°</div>
           </div>
         </div>`;
   });
@@ -104,7 +108,7 @@ function cityInput(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}`).then(condtions);
 
-  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
+  let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=7133a7c1b7e259ct80aa4378ddfb7f9o&units=imperial`;
   axios.get(`${forecastUrl}`).then(displayForecast);
 }
 function userSubmit(event) {
