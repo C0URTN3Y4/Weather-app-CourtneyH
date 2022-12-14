@@ -39,24 +39,31 @@ function formatDate() {
 let h2 = document.querySelector("h2");
 h2.innerHTML = formatDate();
 
-function displayForecast(response) {
-  let daily = response.data.daily;
-  console.log(daily);
-  //let days = ["Today", "Tomorrow", "Following Day", "Day After", "Mon"];
-  //let orderedTime = days[daily];
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+  return days[day];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHtml = `<div class="row">`;
-  days.forEach(function (orderedTime) {
+  forecast.forEach(function (forecastDay) {
     forecastHtml =
       forecastHtml +
       `<div class="col">
-          <div class="forecast date">${orderedTime.dt}</div>
+          <div class="forecast date">${formatDay(forecastDay.time)}</div>
           <img src="#" alt=""/>
           <div class="forecastTemps">
-          <div class="tempHigh">${orderedTime.temp_max}°</div>
-          <div class="tempLow">${orderedTime.temp_min}°</div>
+          <div class="tempHigh">${Math.round(
+            forecastDay.temperature.maximum
+          )}°</div>
+          <div class="tempLow">${Math.round(
+            forecastDay.temperature.minimum
+          )}°</div>
           </div>
         </div>`;
   });
