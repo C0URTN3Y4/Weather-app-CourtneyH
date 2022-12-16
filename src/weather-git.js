@@ -73,9 +73,20 @@ function displayForecast(response) {
 }
 //current location
 function weather(response) {
-  let temp = Math.round(response.data.main.temp);
-  let small = document.querySelector("small");
-  small.innerHTML = `${temp}°F`;
+  document.querySelector("#city").innerHTML = response.data.name;
+  fahrenheitTemp = response.data.main.temp;
+  document.querySelector("#displayTemp").innerHTML = Math.round(fahrenheitTemp);
+  document.querySelector("#wind").innerHTML =
+    "Current windspeed: " + Math.round(response.data.wind.speed) + " mph";
+  document.querySelector("h5").innerHTML = response.data.weather[0].description;
+  document.querySelector("#feels").innerHTML =
+    "Feels like: " + Math.round(response.data.main.feels_like) + "°F";
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 
 function weatherLocation(position) {
