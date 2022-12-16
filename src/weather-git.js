@@ -48,7 +48,6 @@ function formatDay(timestamp) {
 }
 function displayForecast(response) {
   let forecast = response.data.daily;
-  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHtml = `<div class="row">`;
@@ -95,6 +94,9 @@ function weatherLocation(position) {
   let apiKey = `8cac06f7ab6c10287cd06a316ff84a57`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&lat=${lat}&lon=${long}&units=imperial`;
   axios.get(`${apiUrl}`).then(weather);
+
+  let currentForecast = `https://api.shecodes.io/weather/v1/forecast?lon=${long}&lat=${lat}&key=7133a7c1b7e259ct80aa4378ddfb7f9o&units=imperial`;
+  axios.get(`${currentForecast}`).then(displayForecast);
 }
 
 function clicked(event) {
