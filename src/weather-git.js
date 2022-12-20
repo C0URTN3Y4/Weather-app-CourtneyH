@@ -72,27 +72,23 @@ function displayForecast(response) {
 }
 //current location
 function weather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  fahrenheitTemp = response.data.main.temp;
+  document.querySelector("#city").innerHTML = response.data.city;
+  fahrenheitTemp = response.data.temperature.current;
   document.querySelector("#displayTemp").innerHTML = Math.round(fahrenheitTemp);
   document.querySelector("#wind").innerHTML =
     "Current windspeed: " + Math.round(response.data.wind.speed) + " mph";
-  document.querySelector("h5").innerHTML = response.data.weather[0].description;
+  document.querySelector("h5").innerHTML = response.data.condition.description;
   document.querySelector("#feels").innerHTML =
-    "Feels like: " + Math.round(response.data.main.feels_like) + "°F";
+    "Feels like: " + Math.round(response.data.temperature.feels_like) + "°F";
   document
     .querySelector("#icon")
-    .setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
+    .setAttribute("src", `${response.data.condition.icon_url}`);
 }
 
 function weatherLocation(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let apiKey = `8cac06f7ab6c10287cd06a316ff84a57`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&lat=${lat}&lon=${long}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=7133a7c1b7e259ct80aa4378ddfb7f9o&units=imperial`;
   axios.get(`${apiUrl}`).then(weather);
 
   let currentForecast = `https://api.shecodes.io/weather/v1/forecast?lon=${long}&lat=${lat}&key=7133a7c1b7e259ct80aa4378ddfb7f9o&units=imperial`;
@@ -108,25 +104,21 @@ let position = document.querySelector("#coordinates");
 position.addEventListener("click", clicked);
 
 function condtions(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  fahrenheitTemp = response.data.main.temp;
+  document.querySelector("#city").innerHTML = response.data.city;
+  fahrenheitTemp = response.data.temperature.current;
   document.querySelector("#displayTemp").innerHTML = Math.round(fahrenheitTemp);
   document.querySelector("#wind").innerHTML =
     "Current windspeed: " + Math.round(response.data.wind.speed) + " mph";
-  document.querySelector("h5").innerHTML = response.data.weather[0].description;
+  document.querySelector("h5").innerHTML = response.data.condition.description;
   document.querySelector("#feels").innerHTML =
-    "Feels like: " + Math.round(response.data.main.feels_like) + "°F";
+    "Feels like: " + Math.round(response.data.temperature.feels_like) + "°F";
   document
     .querySelector("#icon")
-    .setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
+    .setAttribute("src", `${response.data.condition.icon_url}`);
 }
 
 function cityInput(city) {
-  let apiKey = `8cac06f7ab6c10287cd06a316ff84a57`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=7133a7c1b7e259ct80aa4378ddfb7f9o&units=imperial`;
   axios.get(`${apiUrl}`).then(condtions);
 
   let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=7133a7c1b7e259ct80aa4378ddfb7f9o&units=imperial`;
